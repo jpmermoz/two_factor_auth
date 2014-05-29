@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529132420) do
+ActiveRecord::Schema.define(version: 20140529181956) do
+
+  create_table "twilio_credentials", force: true do |t|
+    t.string   "sid"
+    t.string   "auth_token"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "twilio_credentials", ["phone_number"], name: "index_twilio_credentials_on_phone_number", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email"
