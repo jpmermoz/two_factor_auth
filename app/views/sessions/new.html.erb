@@ -1,0 +1,15 @@
+<% provide(:title, "Iniciar Sesión") %>
+
+<div class="well">
+	<h2>Iniciar Sesión</h2>
+	<hr />
+
+	<%= simple_form_for(:session, url: sessions_path) do |f| %>
+		
+		<%= f.input :email %>
+		<%= f.input :password %>
+
+		<br />
+		<%= f.submit "Iniciar Sesión", class: "btn btn-lg btn-primary" %>
+	<% end %>
+</div>

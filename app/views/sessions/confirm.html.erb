@@ -1,0 +1,14 @@
+<% provide(:title, "Confirmación de SMS") %>
+
+<div class="well">
+	<h2>Por favor, confirme el código enviado a su celular en los próximos 2 minutos</h2>
+	<hr />
+
+	<%= simple_form_for(:session, url: validate_path) do |f| %>
+		
+		<%= f.input :confirmation_code, label: "Código de Confirmación" %>
+
+		<br />
+		<%= f.submit "Confirmar", class: "btn btn-lg btn-primary" %>
+	<% end %>
+</div>

@@ -1,0 +1,7 @@
+es:
+  attributes:
+    name: "Nombre"
+    password: "Contraseña"
+    password_confirmation: "Confirmación de Contraseña"
+    phone_number: "Número de Celular"
+    confirmation_code: "Código de Confirmación"

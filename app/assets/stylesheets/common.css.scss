@@ -1,0 +1,55 @@
+@import "twitter/bootstrap.min";
+
+ /* Override Bootstrap 3 font locations */
+ @font-face {
+ 	font-family: 'Glyphicons Halflings';
+ 	src: font-url('twitter/glyphicons-halflings-regular.eot');
+ 	src: font-url('twitter/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+ 	font-url('twitter/glyphicons-halflings-regular.woff') format('woff'), 
+ 	font-url('twitter/glyphicons-halflings-regular.ttf') format('truetype'), 
+ 	font-url('twitter/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+ }
+
+body {
+	padding-top: 80px;
+}
+
+.flash-message {
+	font-weight: bold;
+	
+	.bg-color-alert {
+		@extend .alert-danger;
+	}
+
+	.bg-color-notice {
+		@extend .alert-success;
+	}
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="tel"], select, textarea {
+	@extend .form-control;
+}
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+  font-weight: bold;
+}
+
+.error { @extend .has-error; }
+.help-inline { display: none; }
+
+.popover {
+	width: 500px;
+
+	.popover-content {
+		font-size: 12px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+}
+
+.tab-content{
+	padding: 15px;
+}

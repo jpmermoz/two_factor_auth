@@ -1,0 +1,19 @@
+<% provide(:title, "Registro") %>
+
+<div class="well">
+	<h2>Registro de Usuario</h2>
+	<hr />
+
+	<%= simple_form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		
+		<%= f.input :name %>
+		<%= f.input :email %>
+		<%= f.input :phone_number, placeholder: "Ej. 261XXXXXXX" %>
+		<%= f.input :password %>
+		<%= f.input :password_confirmation %>
+
+		<br />
+		<%= f.submit "Crear Cuenta", class: "btn btn-lg btn-primary" %>
+	<% end %>
+</div>

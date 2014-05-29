@@ -1,0 +1,20 @@
+<% provide(:title, "Principal") %>
+
+<div class="jumbotron">
+	<div class="pull-right">
+		<%= image_tag 'um.png', class: 'pull-right' %>
+	</div>
+
+  <h2>Doble Factor de Autenticación</h2>
+  <p>Trabajo Final de Comunicaciones de Redes Seguras | Año 2014</p>
+  <p>Alumno: Juan Pedro Mermoz</p>
+  <br />
+
+  <% if !signed_in? %>
+	  <p><%= link_to "Iniciar Sesión", signin_path, class: "btn btn-lg btn-primary" %></p>
+	  <p>No posee cuenta? <%= link_to "Registrese", signup_path %></p>
+  <% else %>
+  	<p>Bienvenido <%= current_user.name %>!</p>
+  	<p><%= link_to "Cerrar Sesión", signout_path, method: :delete, class: "btn btn-lg btn-primary" %></p>
+  <% end %>
+</div>
