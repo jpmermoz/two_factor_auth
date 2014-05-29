@@ -3,7 +3,7 @@ require 'rvm/capistrano'
 
 set :application, "Two Factor Auth"
 set :repository,  'https://jpmermoz@github.com/jpmermoz/two_factor_auth.git'
-set :deploy_to, '/var/www/two_factor_auth'
+set :deploy_to, '/var/www/jpmermoz.codingways.com'
 set :scm, :git
 set :deploy_via, :remote_cache
 set :use_sudo, false
