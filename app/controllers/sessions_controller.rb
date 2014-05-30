@@ -8,11 +8,7 @@ class SessionsController < ApplicationController
   	user = User.find_by(email: params[:session][:email].downcase)
   	if user and user.authenticate(params[:session][:password])
 			confirmation_code = User.build_confirmation_code	
-			
-      if user.send_confirmation_code(confirmation_code).nil?
-        redirect_to root_url, alert: "No posee credenciales de Twilio en su base de datos!"
-        return
-      end
+      user.send_confirmation_code(confirmation_code)
 
 			user.update_attribute(:confirmation_code, Digest::SHA256.hexdigest(confirmation_code))
 			user.update_attribute(:sent_at, Time.now)

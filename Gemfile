@@ -13,7 +13,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'simple_form'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'twilio-ruby'
 
 gem 'capistrano'
 gem 'rvm-capistrano'

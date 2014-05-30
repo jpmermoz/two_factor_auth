@@ -13,18 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20140529181956) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "twilio_credentials", force: true do |t|
-    t.string   "sid"
-    t.string   "auth_token"
-    t.string   "phone_number"
+  create_table "clickatell_credentials", force: true do |t|
+    t.string   "api_id"
+    t.string   "username"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "twilio_credentials", ["phone_number"], name: "index_twilio_credentials_on_phone_number", unique: true, using: :btree
+  add_index "clickatell_credentials", ["api_id"], name: "index_clickatell_credentials_on_api_id", unique: true
+  add_index "clickatell_credentials", ["username"], name: "index_clickatell_credentials_on_username", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -38,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140529181956) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["phone_number"], name: "index_users_on_phone_number", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["phone_number"], name: "index_users_on_phone_number", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

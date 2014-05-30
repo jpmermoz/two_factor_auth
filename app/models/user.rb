@@ -1,5 +1,3 @@
-require 'twilio-ruby'
-
 class User < ActiveRecord::Base
 	has_secure_password
 
@@ -9,12 +7,15 @@ class User < ActiveRecord::Base
 	validates :phone_number, length: { is: 10 }, uniqueness: true
 	validate  :phone_number_is_from_mendoza
 
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }
+
 	before_save {
 		self.email = email.downcase
 	}
 
 	after_create {
-		self.update_attribute(:phone_number, "+54#{self.phone_number}")
+		self.update_attribute(:phone_number, "+549#{self.phone_number}")
 	}
 
 	def self.build_confirmation_code
@@ -30,16 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation_code(code)
-  	twilio_credentials = TwilioCredential.first
-
-  	return nil if twilio_credentials.nil?
-
-  	client = Twilio::REST::Client.new(twilio_credentials.sid, twilio_credentials.auth_token)
-  	client.account.messages.create(
-  		from: twilio_credentials.phone_number,
-  		to: self.phone_number,
-  		body: "Su código es #{code}"
-		)
+  	puts code
   end
 
 	private
