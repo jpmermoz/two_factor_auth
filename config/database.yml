@@ -1,21 +1,11 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: two_factor_auth_development
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: two_factor_auth
-  password: two_factor_auth
-  host: 127.0.0.1
+  timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: two_factor_auth_production
+  adapter: sqlite3
+  database: db/production.sqlite3
   pool: 5
-  username: two_factor_auth
-  password: two_factor_auth
+  timeout: 5000
