@@ -14,10 +14,6 @@ class User < ActiveRecord::Base
 		self.email = email.downcase
 	}
 
-	after_create {
-		self.update_attribute(:phone_number, "+549#{self.phone_number}")
-	}
-
 	def self.build_confirmation_code
 		SecureRandom.hex[0,6]
 	end
@@ -31,7 +27,19 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation_code(code)
-  	puts code
+		require 'uri'
+		require 'net/http'
+
+		uri = URI.parse("http://10.8.0.50/messages")
+
+		begin
+			Net::HTTP.post_form(uri, {
+				"message[number]" => "#{phone_number}",
+				"message[content]" => "Su codigo de confirmacion es #{code}"
+			}) 
+		rescue
+			return -1
+		end
   end
 
 	private
